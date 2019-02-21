@@ -1,0 +1,7 @@
+/Library/metadata/*
+/Library/PackageCache/*
+/Library/ShaderCache*
+/Temp/*
+*.dll
+*.pdb
+*.log
