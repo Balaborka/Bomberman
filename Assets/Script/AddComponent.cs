@@ -11,8 +11,8 @@ public class AddComponent : MonoBehaviour
     private int width = 9;
     private int height = 11;
 
-    public GameObject obstacles;
-    private GameObject inst_obstacles;
+    public GameObject obstacle;
+    private GameObject inst_obstacle;
     private System.Random rand = new System.Random();
 
     void Start()
@@ -27,8 +27,8 @@ public class AddComponent : MonoBehaviour
 
         if (k > 7)
         {
-            GameObject inst_obstacles = Instantiate(block, new Vector3(x, 0.0f, y), Quaternion.identity) as GameObject;
-            Renderer rend = inst_obstacles.GetComponent<Renderer>();
+            GameObject inst_obstacle = Instantiate(obstacle, new Vector3(x, 0.0f, y), Quaternion.identity) as GameObject;
+            Renderer rend = inst_obstacle.GetComponent<Renderer>();
             rend.material.SetColor("_Color", Color.green);
         }
     }
