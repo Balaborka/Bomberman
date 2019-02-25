@@ -21,6 +21,11 @@ public class AddComponent : MonoBehaviour
         CreateWalls();
     }
 
+    void Update()
+    {
+        PutBomb();
+    }
+
     void CreateObstacles(int x, int y)
     {
         int k = rand.Next(10);
@@ -63,5 +68,11 @@ public class AddComponent : MonoBehaviour
                 }
             }
         }
+    }
+
+    void PutBomb()
+    {
+        if (Input.GetMouseButtonDown(0))
+            Debug.Log("Pressed left click.");
     }
 }
