@@ -167,6 +167,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 428656, guid: 655de5f11d6edd04bb9d0c58c66f5142, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 71.13102
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 655de5f11d6edd04bb9d0c58c66f5142, type: 3}
 --- !u!1 &716877943
@@ -200,8 +204,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   block: {fileID: 3646221428801045598, guid: 6153b5134526e3648a74dea9b22bd6b9, type: 3}
-  obstacle: {fileID: 3646221428801045598, guid: 6153b5134526e3648a74dea9b22bd6b9,
+  obstacle: {fileID: 8589606624500686654, guid: 42eb4fae2bd404147ab6128d6c6fc5d1,
     type: 3}
+  player: {fileID: 2042715618594197253, guid: 6b79403a10259db448cfde1889463366, type: 3}
 --- !u!108 &716877945
 Light:
   m_ObjectHideFlags: 0
@@ -330,7 +335,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 757915871}
   m_LocalRotation: {x: 0.3150109, y: 0.08879306, z: 0.008690387, w: 0.9448854}
-  m_LocalPosition: {x: 1.77, y: 2.82, z: -3}
+  m_LocalPosition: {x: 1.46, y: 8.96, z: -8.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
