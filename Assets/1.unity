@@ -183,6 +183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 716877946}
   - component: {fileID: 716877945}
+  - component: {fileID: 716877947}
   - component: {fileID: 716877944}
   m_Layer: 0
   m_Name: Directional Light
@@ -203,10 +204,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4889e99d124dec04ca7bac6379147c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Width: 7
   block: {fileID: 3646221428801045598, guid: 6153b5134526e3648a74dea9b22bd6b9, type: 3}
+  plane: {fileID: 839552441139983678, guid: 7e141c4409e116843b8072b0f019efba, type: 3}
   obstacle: {fileID: 8589606624500686654, guid: 42eb4fae2bd404147ab6128d6c6fc5d1,
     type: 3}
   player: {fileID: 2042715618594197253, guid: 6b79403a10259db448cfde1889463366, type: 3}
+  range: 1
+  moveSpeed: 1
 --- !u!108 &716877945
 Light:
   m_ObjectHideFlags: 0
@@ -259,6 +264,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &716877947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716877943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b734c800cb7f60d4088099f5d99a40a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &757915871
 GameObject:
   m_ObjectHideFlags: 0
