@@ -6,12 +6,12 @@ public class PlayerMovement : MonoBehaviour
 {
 
     Vector3 _movementDiretion;
-    Vector3 _destenation;
+    Vector3 _destination;
     public float moveSpeed = 1f;
 
     void Start()
     {
-        _destenation = transform.position;
+        _destination = transform.position;
     }
     
     void Update()
@@ -34,10 +34,11 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit hitInfo;
         Physics.Raycast(new Ray(transform.position, _movementDiretion), out hitInfo, 1f, LayerMask.GetMask("Block", "Obstacle"));
 
-        if (_destenation == transform.position && hitInfo.collider == null)
-            _destenation = transform.position + _movementDiretion;
+        if (_destination == transform.position && hitInfo.collider == null)
+            _destination = transform.position + _movementDiretion;
 
-        transform.position = Vector3.MoveTowards(transform.position, _destenation, moveSpeed * Time.deltaTime * 2);
+        float distance = moveSpeed * Time.deltaTime * 2;
+        transform.position = Vector3.MoveTowards(transform.position, _destination, distance);
     }
 
     string checkRotate = "Up";
