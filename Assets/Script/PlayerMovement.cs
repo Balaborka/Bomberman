@@ -6,11 +6,9 @@ public class PlayerMovement : MonoBehaviour
 {
 
     Vector3 _movementDiretion;
-    Vector3 _destination;
+    public static Vector3 _destination;
     public float moveSpeed = 1f;
 
-    public GameObject bomb;
-    private GameObject inst_bomb;
     void Start()
     {
         _destination = transform.position;
@@ -20,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
     {
         MovementPlayer();
         RotatePlayer();
-        AddBomb();
     }
 
     void MovementPlayer()
@@ -35,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
             _movementDiretion = Vector3.zero;
 
         RaycastHit hitInfo;
-        Physics.Raycast(new Ray(transform.position, _movementDiretion), out hitInfo, 1f, LayerMask.GetMask("Block", "Obstacle"));
+        Physics.Raycast(new Ray(transform.position, _movementDiretion), out hitInfo, 1f, LayerMask.GetMask("Block", "Obstacle", "Enemy"));
 
         if (_destination == transform.position && hitInfo.collider == null)
             _destination = transform.position + _movementDiretion;
@@ -73,14 +70,6 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.identity;
             transform.Rotate(new Vector3(0.0f, -90.0f, 0.0f));
             checkRotate = "Left";
-        }
-    }
-
-    void AddBomb()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            inst_bomb = Instantiate(bomb, new Vector3(_destination.x, 0.5f, _destination.z), Quaternion.identity) as GameObject;
         }
     }
 }
