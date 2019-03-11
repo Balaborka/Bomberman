@@ -22,6 +22,7 @@ public class EnemyMovement : MonoBehaviour
     IEnumerator MovementEnemy()
     {
         int k;
+        int kK;
         float oldPositionX;
         float oldPositionZ;
         while (true)
@@ -34,23 +35,31 @@ public class EnemyMovement : MonoBehaviour
 
                 if (k == 0)
                 {
+                    transform.rotation = Quaternion.identity;
+                    transform.Rotate(new Vector3(0.0f, 90.0f, 0.0f));
                     _movementDiretion.Set(1.0f, 0.0f, 0.0f);
                 }
                 else if (k == 1)
                 {
+                    transform.rotation = Quaternion.identity;
+                    transform.Rotate(new Vector3(0.0f, -90.0f, 0.0f));
                     _movementDiretion.Set(-1.0f, 0.0f, 0.0f);
                 }
                 else if (k == 2)
                 {
+                    transform.rotation = Quaternion.identity;
+                    transform.Rotate(new Vector3(0.0f, 0.0f, 0.0f));
                     _movementDiretion.Set(0.0f, 0.0f, 1.0f);
                 }
                 else if (k == 3)
                 {
+                    transform.rotation = Quaternion.identity;
+                    transform.Rotate(new Vector3(0.0f, -180.0f, 0.0f));
                     _movementDiretion.Set(0.0f, 0.0f, -1.0f);
                 }
 
                 RaycastHit hitInfo;
-                Physics.Raycast(new Ray(transform.position, _movementDiretion), out hitInfo, 1f, LayerMask.GetMask("Block", "Obstacle"));
+                Physics.Raycast(new Ray(transform.position, _movementDiretion), out hitInfo, 1f, LayerMask.GetMask("Block", "Obstacle", "Bomb", "Player"));
 
                 if (_destination == transform.position && hitInfo.collider == null)
                     _destination = transform.position + _movementDiretion;
@@ -58,8 +67,7 @@ public class EnemyMovement : MonoBehaviour
                 oldPositionX = transform.position.x;
                 oldPositionZ = transform.position.z;
 
-                float distance = moveSpeed / 2;
-                Debug.Log(distance);
+                float distance = moveSpeed;
                 transform.position = Vector3.MoveTowards(transform.position, _destination, distance);
             } while (oldPositionX == transform.position.x && oldPositionZ == transform.position.z);
         }
