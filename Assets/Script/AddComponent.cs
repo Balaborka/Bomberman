@@ -29,8 +29,8 @@ public class AddComponent : MonoBehaviour
     void Start()
     {
         CreateWalls();
-        CreatePlayers(inst_enemy, enemy);
-        CreatePlayers(inst_player, player);
+        CreatePlayer(inst_enemy, enemy);
+        CreatePlayer(inst_player, player);
         CreateBlocks(playerX, playerY);
     }
 
@@ -94,7 +94,7 @@ public class AddComponent : MonoBehaviour
         }
     }
     
-    public (int playerX, int playerY) CreatePlayers(GameObject playerInstObj, GameObject playerObj)
+    public (int playerX, int playerY) CreatePlayer(GameObject playerInstObj, GameObject playerObj)
     {
         playerX = 0;
         playerY = 0;

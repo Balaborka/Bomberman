@@ -20,6 +20,14 @@ public class PlayerMovement : MonoBehaviour
         RotatePlayer();
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     void MovementPlayer()
     {
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -32,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
             _movementDiretion = Vector3.zero;
 
         RaycastHit hitInfo;
-        Physics.Raycast(new Ray(transform.position, _movementDiretion), out hitInfo, 1f, LayerMask.GetMask("Block", "Obstacle", "Enemy"));
+        Physics.Raycast(new Ray(transform.position, _movementDiretion), out hitInfo, 1f, LayerMask.GetMask("Block", "Obstacle", "Bomb"));
 
         if (_destination == transform.position && hitInfo.collider == null)
             _destination = transform.position + _movementDiretion;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -112,67 +112,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &68650548
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 124052, guid: 655de5f11d6edd04bb9d0c58c66f5142, type: 3}
-      propertyPath: m_Name
-      value: Bomb
-      objectReference: {fileID: 0}
-    - target: {fileID: 428656, guid: 655de5f11d6edd04bb9d0c58c66f5142, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 428656, guid: 655de5f11d6edd04bb9d0c58c66f5142, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.22294
-      objectReference: {fileID: 0}
-    - target: {fileID: 428656, guid: 655de5f11d6edd04bb9d0c58c66f5142, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 428656, guid: 655de5f11d6edd04bb9d0c58c66f5142, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.33130917
-      objectReference: {fileID: 0}
-    - target: {fileID: 428656, guid: 655de5f11d6edd04bb9d0c58c66f5142, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.19434018
-      objectReference: {fileID: 0}
-    - target: {fileID: 428656, guid: 655de5f11d6edd04bb9d0c58c66f5142, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.10764635
-      objectReference: {fileID: 0}
-    - target: {fileID: 428656, guid: 655de5f11d6edd04bb9d0c58c66f5142, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9169942
-      objectReference: {fileID: 0}
-    - target: {fileID: 428656, guid: 655de5f11d6edd04bb9d0c58c66f5142, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 428656, guid: 655de5f11d6edd04bb9d0c58c66f5142, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 428656, guid: 655de5f11d6edd04bb9d0c58c66f5142, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 428656, guid: 655de5f11d6edd04bb9d0c58c66f5142, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 428656, guid: 655de5f11d6edd04bb9d0c58c66f5142, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 71.13102
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 655de5f11d6edd04bb9d0c58c66f5142, type: 3}
 --- !u!1 &716877943
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,6 +123,7 @@ GameObject:
   - component: {fileID: 716877946}
   - component: {fileID: 716877945}
   - component: {fileID: 716877947}
+  - component: {fileID: 716877948}
   - component: {fileID: 716877944}
   m_Layer: 0
   m_Name: Directional Light
@@ -204,13 +144,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4889e99d124dec04ca7bac6379147c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
   width: 7
+  height: 7
   block: {fileID: 3646221428801045598, guid: 6153b5134526e3648a74dea9b22bd6b9, type: 3}
+  inst_block: {fileID: 0}
   plane: {fileID: 839552441139983678, guid: 7e141c4409e116843b8072b0f019efba, type: 3}
+  inst_plane: {fileID: 0}
   obstacle: {fileID: 8589606624500686654, guid: 42eb4fae2bd404147ab6128d6c6fc5d1,
     type: 3}
+  inst_obstacle: {fileID: 0}
   player: {fileID: 2042715618594197253, guid: 6b79403a10259db448cfde1889463366, type: 3}
+  inst_player: {fileID: 0}
   enemy: {fileID: 8596825257134141051, guid: 54608b1b5b6dc924f8133f2db8b7e926, type: 3}
+  inst_enemy: {fileID: 0}
+  playerX: 0
+  playerY: 0
 --- !u!108 &716877945
 Light:
   m_ObjectHideFlags: 0
@@ -275,8 +225,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b734c800cb7f60d4088099f5d99a40a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &716877948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716877943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e103887c312a8d744b30f1736ff93f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bomb: {fileID: 8635922240588095540, guid: 79e23a84190d910468e2ebf5776b79a1, type: 3}
+  inst_bomb: {fileID: 0}
+  blast: {fileID: 3418000876429053352, guid: 9cc38c2265ad66d4cb451c45f0e6c94a, type: 3}
+  inst_blast: {fileID: 0}
+  bombPosition: {x: 0, y: 0, z: 0}
+  bombBlast: {x: 0, y: 0, z: 0}
+  isBomb: 0
+  timeRemaining: 3
+  blastLength: 2
 --- !u!1 &757915871
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,7 +22,6 @@ public class EnemyMovement : MonoBehaviour
     IEnumerator MovementEnemy()
     {
         int k;
-        int kK;
         float oldPositionX;
         float oldPositionZ;
         while (true)
@@ -59,7 +58,7 @@ public class EnemyMovement : MonoBehaviour
                 }
 
                 RaycastHit hitInfo;
-                Physics.Raycast(new Ray(transform.position, _movementDiretion), out hitInfo, 1f, LayerMask.GetMask("Block", "Obstacle", "Bomb", "Player"));
+                Physics.Raycast(new Ray(transform.position, _movementDiretion), out hitInfo, 1f, LayerMask.GetMask("Block", "Obstacle", "Bomb"));
 
                 if (_destination == transform.position && hitInfo.collider == null)
                     _destination = transform.position + _movementDiretion;
