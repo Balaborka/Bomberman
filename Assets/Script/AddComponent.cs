@@ -23,12 +23,15 @@ public class AddComponent : MonoBehaviour
     private GameObject inst_player;
     public GameObject enemy;
     private GameObject inst_enemy;
+    public GameObject smartEnemy;
+    private GameObject inst_smartEnemy;
     int playerX;
     int playerY;
 
     void Start()
     {
         CreateWalls();
+        CreatePlayer(inst_smartEnemy, smartEnemy);
         CreatePlayer(inst_enemy, enemy);
         CreatePlayer(inst_player, player);
         CreateBlocks(playerX, playerY);
