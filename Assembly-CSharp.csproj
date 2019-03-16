@@ -60,6 +60,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\A Star\Grid.cs" />
+    <Compile Include="Assets\Script\A Star\MoveTarget.cs" />
+    <Compile Include="Assets\Script\A Star\Node.cs" />
+    <Compile Include="Assets\Script\A Star\Pathfinding.cs" />
     <Compile Include="Assets\Script\AddComponent.cs" />
     <Compile Include="Assets\Script\Bomb.cs" />
     <Compile Include="Assets\Script\CrashBomb.cs" />

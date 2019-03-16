@@ -144,23 +144,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4889e99d124dec04ca7bac6379147c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
   width: 7
-  height: 7
   block: {fileID: 3646221428801045598, guid: 6153b5134526e3648a74dea9b22bd6b9, type: 3}
-  inst_block: {fileID: 0}
   plane: {fileID: 839552441139983678, guid: 7e141c4409e116843b8072b0f019efba, type: 3}
-  inst_plane: {fileID: 0}
   obstacle: {fileID: 8589606624500686654, guid: 42eb4fae2bd404147ab6128d6c6fc5d1,
     type: 3}
-  inst_obstacle: {fileID: 0}
   player: {fileID: 2042715618594197253, guid: 6b79403a10259db448cfde1889463366, type: 3}
-  inst_player: {fileID: 0}
   enemy: {fileID: 8596825257134141051, guid: 54608b1b5b6dc924f8133f2db8b7e926, type: 3}
-  inst_enemy: {fileID: 0}
-  playerX: 0
-  playerY: 0
+  smartEnemy: {fileID: 7873878681729352352, guid: ad3c8d702d606ac498e09b5a0bfd9b47,
+    type: 3}
 --- !u!108 &716877945
 Light:
   m_ObjectHideFlags: 0
@@ -237,17 +229,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e103887c312a8d744b30f1736ff93f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
   bomb: {fileID: 8635922240588095540, guid: 79e23a84190d910468e2ebf5776b79a1, type: 3}
-  inst_bomb: {fileID: 0}
   blast: {fileID: 3418000876429053352, guid: 9cc38c2265ad66d4cb451c45f0e6c94a, type: 3}
-  inst_blast: {fileID: 0}
-  bombPosition: {x: 0, y: 0, z: 0}
   bombBlast: {x: 0, y: 0, z: 0}
-  isBomb: 0
-  timeRemaining: 3
-  blastLength: 2
 --- !u!1 &757915871
 GameObject:
   m_ObjectHideFlags: 0

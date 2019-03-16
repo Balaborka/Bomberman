@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,68 +8,64 @@ public class EnemyMovement : MonoBehaviour
     private System.Random rand = new System.Random();
     public float moveSpeed = 1;
     Vector3 _movementDiretion;
-    Vector3 _destination;   
+    Vector3 _destination;
+    float transformY;
 
     void Start()
     {
         _destination = transform.position;
-        StartCoroutine(MovementEnemy());
+        GeneratePosition();
     }
     void Update()
     {
-        //MovementEnemy();
+        MovementEnemyNew();
     }
 
-    IEnumerator MovementEnemy()
+    private void MovementEnemyNew()
     {
-        int k;
-        float oldPositionX;
-        float oldPositionZ;
-        while (true)
-        {
-            yield return new WaitForSeconds(1);
-            do
+        var oldPositionX = transform.position.x;
+        var oldPositionZ = transform.position.z;
+
+        RaycastHit hitInfo;
+        Physics.Raycast(new Ray(transform.position, _movementDiretion), out hitInfo, 1f, LayerMask.GetMask("Block", "Bomb"));
+
+        if (_destination == transform.position) {
+            if (hitInfo.collider == null)
             {
-                
-                k = rand.Next(4);
+                _destination = transform.position + _movementDiretion; 
+                transform.rotation = Quaternion.identity;
+                transform.Rotate(new Vector3(0.0f, transformY, 0.0f));
+            }
+            GeneratePosition();
+        }
 
-                if (k == 0)
-                {
-                    transform.rotation = Quaternion.identity;
-                    transform.Rotate(new Vector3(0.0f, 90.0f, 0.0f));
-                    _movementDiretion.Set(1.0f, 0.0f, 0.0f);
-                }
-                else if (k == 1)
-                {
-                    transform.rotation = Quaternion.identity;
-                    transform.Rotate(new Vector3(0.0f, -90.0f, 0.0f));
-                    _movementDiretion.Set(-1.0f, 0.0f, 0.0f);
-                }
-                else if (k == 2)
-                {
-                    transform.rotation = Quaternion.identity;
-                    transform.Rotate(new Vector3(0.0f, 0.0f, 0.0f));
-                    _movementDiretion.Set(0.0f, 0.0f, 1.0f);
-                }
-                else if (k == 3)
-                {
-                    transform.rotation = Quaternion.identity;
-                    transform.Rotate(new Vector3(0.0f, -180.0f, 0.0f));
-                    _movementDiretion.Set(0.0f, 0.0f, -1.0f);
-                }
+        float distance = moveSpeed * Time.deltaTime * 2;
+        transform.position = Vector3.MoveTowards(transform.position, _destination, distance);
+    }
 
-                RaycastHit hitInfo;
-                Physics.Raycast(new Ray(transform.position, _movementDiretion), out hitInfo, 1f, LayerMask.GetMask("Block", "Obstacle", "Bomb"));
+    private void GeneratePosition()
+    {
+        int randomInt = rand.Next(4);
 
-                if (_destination == transform.position && hitInfo.collider == null)
-                    _destination = transform.position + _movementDiretion;
-
-                oldPositionX = transform.position.x;
-                oldPositionZ = transform.position.z;
-
-                float distance = moveSpeed;
-                transform.position = Vector3.MoveTowards(transform.position, _destination, distance);
-            } while (oldPositionX == transform.position.x && oldPositionZ == transform.position.z);
+        if (randomInt == 0)
+        {
+            transformY = 90.0f;
+            _movementDiretion.Set(1.0f, 0.0f, 0.0f);
+        }
+        else if (randomInt == 1)
+        {
+            transformY = -90.0f;
+            _movementDiretion.Set(-1.0f, 0.0f, 0.0f);
+        }
+        else if (randomInt == 2)
+        {
+            transformY = 0.0f;
+            _movementDiretion.Set(0.0f, 0.0f, 1.0f);
+        }
+        else if (randomInt == 3)
+        {
+            transformY = - 180.0f;
+            _movementDiretion.Set(0.0f, 0.0f, -1.0f);
         }
     }
 }

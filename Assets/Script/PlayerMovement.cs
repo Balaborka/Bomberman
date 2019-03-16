@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
             _movementDiretion = Vector3.zero;
 
         RaycastHit hitInfo;
-        Physics.Raycast(new Ray(transform.position, _movementDiretion), out hitInfo, 1f, LayerMask.GetMask("Block", "Obstacle", "Bomb"));
+        Physics.Raycast(new Ray(transform.position, _movementDiretion), out hitInfo, 1f, LayerMask.GetMask("Block", "Bomb"));
 
         if (_destination == transform.position && hitInfo.collider == null)
             _destination = transform.position + _movementDiretion;
