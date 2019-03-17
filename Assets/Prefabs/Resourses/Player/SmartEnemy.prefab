@@ -548,8 +548,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3318155205060889800}
   - component: {fileID: 7194201868414141539}
-  - component: {fileID: 4294904362016718157}
-  - component: {fileID: 542464643722744311}
+  - component: {fileID: 1658077520881358111}
+  - component: {fileID: 4576708605332308701}
+  - component: {fileID: 802073154552171091}
   - component: {fileID: 7025505493319974197}
   m_Layer: 13
   m_Name: SmartEnemy
@@ -593,7 +594,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4294904362016718157
+--- !u!114 &1658077520881358111
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -602,10 +603,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7873878681729352352}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86218d979e8d6fc419fded1b358ee091, type: 3}
+  m_Script: {fileID: 11500000, guid: 1959828c4084eb84faabe99afbebf9a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &542464643722744311
+  iGridSizeX: 9
+  iGridSizeY: 9
+--- !u!114 &4576708605332308701
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -617,6 +620,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f3ec631a8f0dd448abd4bfea517adcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &802073154552171091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7873878681729352352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2289829d4c65b264d832388447819f1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1
 --- !u!54 &7025505493319974197
 Rigidbody:
   m_ObjectHideFlags: 0

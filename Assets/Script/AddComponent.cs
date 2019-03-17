@@ -6,8 +6,10 @@ using UnityEngine;
 public class AddComponent : MonoBehaviour
 {
 
-    public int width = 7;
-    private int height = 7;
+    private int width = 9;
+    private int height = 9;
+    private int iGridSizeX;
+    private int iGridSizeY;
 
     public GameObject block;
     private GameObject inst_block;
@@ -25,16 +27,22 @@ public class AddComponent : MonoBehaviour
     private GameObject inst_enemy;
     public GameObject smartEnemy;
     private GameObject inst_smartEnemy;
-    int playerX;
-    int playerY;
+    public static List<Vector3> blocks = new List<Vector3>();
+
+    Node[,] NodeArray;
+    public List<Node> FinalPath;
 
     void Start()
     {
         CreateWalls();
         CreatePlayer(inst_smartEnemy, smartEnemy);
         CreatePlayer(inst_enemy, enemy);
-        CreatePlayer(inst_player, player);
-        CreateBlocks(playerX, playerY);
+
+        var playerPos = CreatePlayer(inst_player, player);
+        CreateBlocks(playerPos.playerX, playerPos.playerY);
+
+        iGridSizeX = width;
+        iGridSizeY = height;
     }
 
     void Update()
@@ -43,11 +51,11 @@ public class AddComponent : MonoBehaviour
 
     void CreateWalls()
     {
-        for (int i = -2; i <= width + 1; i++)
+        for (int i = -1; i <= width; i++)
         {
-            for (int j = -2; j <= height + 1; j++)
+            for (int j = -1; j <= height; j++)
             {
-                if (i == -2 || i == width + 1 || j == -2 || j == height + 1)
+                if (i == -1 || i == width || j == -1 || j == height)
                 {
                     inst_block = Instantiate(block, new Vector3(0.0f + i, 0.5f, 0.0f + j), Quaternion.identity) as GameObject;
                 }
@@ -69,13 +77,14 @@ public class AddComponent : MonoBehaviour
     void CreateBlocks(int ifPlayerX, int ifPlayerY)
     {
         int count = 0;
-        for (int i = -1; i <= width; i++)
+        for (int i = 1; i < width - 1; i++)
         {
-            for (int j = -1; j <= height; j++)
+            for (int j = 1; j < height - 1; j++)
             {
-                if (i % 2 == 0 && j % 2 == 0)
+                if (i % 2 != 0 && j % 2 != 0)
                 {
                     inst_block = Instantiate(block, new Vector3(0.0f + i, 0.5f, 0.0f + j), Quaternion.identity) as GameObject;
+                    blocks.Add(new Vector3(0.0f + i, 0.5f, 0.0f + j));
                 }
                 else if (i != ifPlayerX || j != ifPlayerY)
                 {
@@ -99,15 +108,15 @@ public class AddComponent : MonoBehaviour
     
     public (int playerX, int playerY) CreatePlayer(GameObject playerInstObj, GameObject playerObj)
     {
-        playerX = 0;
-        playerY = 0;
-        while (playerX % 2 == 0 || playerY % 2 == 0)
+        var playerX = 1;
+        var playerY = 1;
+        while (playerX % 2 != 0 || playerY % 2 != 0)
         {
-            playerX = rand.Next(-1, width + 1);
-            playerY = rand.Next(-1, height + 1);
+            playerX = rand.Next(0, width);
+            playerY = rand.Next(0, height);
         }
         playerInstObj = Instantiate(playerObj, new Vector3(playerX, 0.0f, playerY), Quaternion.identity) as GameObject;
 
         return (playerX, playerY);
-    }
+    }    
 }
