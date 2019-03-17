@@ -68,7 +68,7 @@ public class AddComponent : MonoBehaviour
     {
         int k = rand.Next(10);
 
-        if (k > 7)
+        if (k > 5)
         {
             GameObject inst_obstacle = Instantiate(obstacle, new Vector3(x, 0.5f, y), Quaternion.identity) as GameObject;
         }

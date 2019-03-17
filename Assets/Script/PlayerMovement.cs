@@ -20,13 +20,13 @@ public class PlayerMovement : MonoBehaviour
         RotatePlayer();
     }
 
-    //void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.tag == "Enemy")
-    //    {
-    //        Destroy(this.gameObject);
-    //    }
-    //}
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
     void MovementPlayer()
     {

@@ -12,11 +12,6 @@ public class SmartEnemyMovement : EnemyMovement
         GridReference = GetComponent<Grid>();        
     }
 
-    private void Start()
-    {
-        Invoke("GridInit", 2f);
-    }
-
     protected override Vector3 GeneratePosition()
     {
         GridReference.CreateGrid();

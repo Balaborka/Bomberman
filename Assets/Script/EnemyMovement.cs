@@ -29,6 +29,7 @@ public class EnemyMovement : MonoBehaviour
  
         if (_destination == transform.position) {
             _movementDiretion = GeneratePosition();
+            Rotation(_movementDiretion);
 
             RaycastHit hitInfo;
             Physics.Raycast(new Ray(transform.position, _movementDiretion), out hitInfo, 1f, LayerMask.GetMask("Block", "Bomb"));
@@ -51,25 +52,38 @@ public class EnemyMovement : MonoBehaviour
 
         if (randomInt == 0)
         {
-            transformY = 90.0f;
             return new Vector3(1.0f, 0.0f, 0.0f);
         }
         else if (randomInt == 1)
         {
-            transformY = -90.0f;
             return new Vector3(-1.0f, 0.0f, 0.0f);
         }
         else if (randomInt == 2)
         {
-            transformY = 0.0f;
             return new Vector3(0.0f, 0.0f, 1.0f);
         }
         else if (randomInt == 3)
         {
-            transformY = -180.0f;
             return new Vector3(0.0f, 0.0f, -1.0f);
         }
         return Vector3.zero;
+    }
+
+    void Rotation(Vector3 vector)
+    {
+        transformY = vector.z != 1.0f ? vector.x * 90 + vector.z * 180 : 0;
+
+        //if (vector.x == 1.0f)
+        //    transformY = 90.0f;
+
+        //else if (vector.x == -1.0f)
+        //    transformY = -90.0f;
+
+        //else if (vector.z == 1.0f)
+        //    transformY = 0.0f;
+
+        //else if (vector.z == -1.0f)
+        //    transformY = -180.0f;
     }
 
     protected virtual int GetNextPosition()
