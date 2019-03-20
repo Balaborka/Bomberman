@@ -32,7 +32,7 @@ public class EnemyMovement : MonoBehaviour
             Rotation(_movementDiretion);
 
             RaycastHit hitInfo;
-            Physics.Raycast(new Ray(transform.position, _movementDiretion), out hitInfo, 1f, LayerMask.GetMask("Block", "Bomb"));
+            Physics.Raycast(new Ray(transform.position, _movementDiretion), out hitInfo, 1f, LayerMask.GetMask("Block", "Obstacle", "Bomb"));
 
             if (hitInfo.collider == null)
             {

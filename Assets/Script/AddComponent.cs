@@ -19,6 +19,8 @@ public class AddComponent : MonoBehaviour
 
     public GameObject obstacle;
     private GameObject inst_obstacle;
+    List<GameObject> obstaclesList = new List<GameObject>();
+    
     private System.Random rand = new System.Random();
 
     public GameObject player;
@@ -27,13 +29,22 @@ public class AddComponent : MonoBehaviour
     private GameObject inst_enemy;
     public GameObject smartEnemy;
     private GameObject inst_smartEnemy;
-    public static List<Vector3> blocks = new List<Vector3>();
+
+    public GameObject BlastLengthPowerUp;
+    public GameObject BombCountPowerUp;
+    public GameObject GhostPowerUp;
+    public GameObject PlayerSpeedPowerUp;
 
     Node[,] NodeArray;
     public List<Node> FinalPath;
 
     void Start()
     {
+        Instantiate(BlastLengthPowerUp, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+        Instantiate(BombCountPowerUp, new Vector3(8.0f, 0.0f, 0.0f), Quaternion.identity);
+        Instantiate(GhostPowerUp, new Vector3(8.0f, 0.0f, 8.0f), Quaternion.identity);
+        Instantiate(PlayerSpeedPowerUp, new Vector3(0.0f, 0.0f, 8.0f), Quaternion.identity);
+
         CreateWalls();
         CreatePlayer(inst_smartEnemy, smartEnemy);
         CreatePlayer(inst_enemy, enemy);
@@ -70,7 +81,8 @@ public class AddComponent : MonoBehaviour
 
         if (k > 5)
         {
-            GameObject inst_obstacle = Instantiate(obstacle, new Vector3(x, 0.5f, y), Quaternion.identity) as GameObject;
+            inst_obstacle = Instantiate(obstacle, new Vector3(x, 0.5f, y), Quaternion.identity) as GameObject;
+            obstaclesList.Add(inst_obstacle);
         }
     }
 
@@ -84,7 +96,6 @@ public class AddComponent : MonoBehaviour
                 if (i % 2 != 0 && j % 2 != 0)
                 {
                     inst_block = Instantiate(block, new Vector3(0.0f + i, 0.5f, 0.0f + j), Quaternion.identity) as GameObject;
-                    blocks.Add(new Vector3(0.0f + i, 0.5f, 0.0f + j));
                 }
                 else if (i != ifPlayerX || j != ifPlayerY)
                 {

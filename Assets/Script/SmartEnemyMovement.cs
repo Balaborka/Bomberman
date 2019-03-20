@@ -40,7 +40,7 @@ public class SmartEnemyMovement : EnemyMovement
             Node CurrentNode = OpenList[0];
             for (int i = 1; i < OpenList.Count; i++)
             {
-                if (OpenList[i].FCost < CurrentNode.FCost || OpenList[i].FCost == CurrentNode.FCost && OpenList[i].ihCost < CurrentNode.ihCost)//If the f cost of that object is less than or equal to the f cost of the current node
+                if (OpenList[i].FCost < CurrentNode.FCost || OpenList[i].FCost == CurrentNode.FCost && OpenList[i].ihCost < CurrentNode.ihCost)
                 {
                     CurrentNode = OpenList[i];
                 }

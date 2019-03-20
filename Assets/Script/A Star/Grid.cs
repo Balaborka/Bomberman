@@ -22,7 +22,7 @@ public class Grid : MonoBehaviour
                 bool Wall = false;
                 
 
-                int layerMask = LayerMask.GetMask("Block");
+                int layerMask = LayerMask.GetMask("Block", "Obstacle");
                 if (Physics.CheckSphere(worldPoint, 0.1f, layerMask))
                 {
                     Wall = true;

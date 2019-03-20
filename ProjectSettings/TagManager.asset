@@ -7,6 +7,8 @@ TagManager:
   - Obstacle
   - Enemy
   - Blast
+  - PowerUp
+  - Bomb
   layers:
   - Default
   - TransparentFX

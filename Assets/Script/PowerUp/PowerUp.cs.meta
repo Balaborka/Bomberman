@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 7d2a2fa6f4e17184dac4f36592b5f981
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - BlastLengthIdent: {fileID: 6253171197634778097, guid: c63a743f83278c4489aae78c3fa3e1e4,
+      type: 3}
+  - BombCountIdent: {fileID: 6253171197634778097, guid: 22eb0fee0a7a7a4409cd7416a38ffddf,
+      type: 3}
+  - GhostIdent: {fileID: 6253171197634778097, guid: 696f3ab21f7222d4885a16bd7a2bef4c,
+      type: 3}
+  - PlayerSpeedIdent: {fileID: 6253171197634778097, guid: 15898172bf18b3d4e996f3e6cac48b70,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

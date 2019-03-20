@@ -4,27 +4,30 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
+
+    RaycastHit hitInfo;
+    bool checkObs0 = true;
+    bool checkObs1 = true;
+    bool checkObs2 = true;
+    bool checkObs3 = true;
+
     public GameObject bomb;
     private GameObject inst_bomb;
 
     public GameObject blast;
-    private GameObject inst_blastCenter;
-    private GameObject inst_blast1;
-    private GameObject inst_blast2;
-    private GameObject inst_blast3;
-    private GameObject inst_blast4;
+    private GameObject inst_blast;
 
     Vector3 bombPosition;
     public Vector3 bombBlast;
-    
-    //List<Vector3> blastsList = new List<Vector3>();
 
     bool isBomb = false;
 
     float timeRemainingBomb = 2f;
     float timeRemainingBlast = 0f;
-    float blastLength = 1f;
+    public static float blastLength = 1;
 
+    public static int bombCount = 0;
+    int bombCounter = 0;
 
     void Start()
     {
@@ -34,8 +37,6 @@ public class Bomb : MonoBehaviour
     void Update()
     {
         AddBomb();
-        DestroyBomb();
-        DestroyBlasts();
     }
 
     void AddBomb()
@@ -47,8 +48,14 @@ public class Bomb : MonoBehaviour
             bombPosition.x = PlayerMovement._destination.x;
             bombPosition.z = PlayerMovement._destination.z;
 
-            isBomb = true;
+            if (bombCounter < bombCount)
+                bombCounter++;
+            else
+                isBomb = true;
         }
+
+        DestroyBomb();
+        DestroyBlasts();
     }
 
     void DestroyBomb()
@@ -57,60 +64,66 @@ public class Bomb : MonoBehaviour
             timeRemainingBomb -= Time.deltaTime;
         else if (isBomb)
         {
-            inst_blastCenter = Instantiate(blast, new Vector3(bombPosition.x, bombPosition.y, bombPosition.z), Quaternion.identity) as GameObject;
-            for (float i = 0; i < blastLength; i += 1f)
+            Instantiate(blast, new Vector3(bombPosition.x, bombPosition.y, bombPosition.z), Quaternion.identity);
+            for (float i = 0; i < blastLength; i += 1)
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    if (j == 0)
+                    if (j == 0 && checkObs0)
                     {
                         bombBlast.x = bombPosition.x + 1f + i;
                         bombBlast.z = bombPosition.z;
-                        inst_blast1 = Instantiate(blast, new Vector3(bombBlast.x, bombBlast.y, bombBlast.z), Quaternion.identity) as GameObject;
+                        Instantiate(blast, new Vector3(bombBlast.x, bombBlast.y, bombBlast.z), Quaternion.identity);
 
-                        //AddBlastsList();
+                        CheckBlast(checkObs0);
                     }
-                    else if (j == 1)
+                    else if (j == 1 && checkObs1)
                     {
                         bombBlast.x = bombPosition.x - 1f - i;
                         bombBlast.z = bombPosition.z;
-                        inst_blast2 = Instantiate(blast, new Vector3(bombBlast.x, bombBlast.y, bombBlast.z), Quaternion.identity) as GameObject;
+                        Instantiate(blast, new Vector3(bombBlast.x, bombBlast.y, bombBlast.z), Quaternion.identity);
 
-                        //AddBlastsList();
+                        CheckBlast(checkObs1);
                     }
-                    else if (j == 2)
+                    else if (j == 2 && checkObs2)
                     {
                         bombBlast.x = bombPosition.x;
                         bombBlast.z = bombPosition.z + 1f + i;
-                        inst_blast3 = Instantiate(blast, new Vector3(bombBlast.x, bombBlast.y, bombBlast.z), Quaternion.identity) as GameObject;
+                        Instantiate(blast, new Vector3(bombBlast.x, bombBlast.y, bombBlast.z), Quaternion.identity);
 
-                        //AddBlastsList(); ;
+                        CheckBlast(checkObs2);
                     }
-                    else if (j == 3)
+                    else if (j == 3 && checkObs3)
                     {
                         bombBlast.x = bombPosition.x;
                         bombBlast.z = bombPosition.z - 1f - i;
-                        inst_blast4 = Instantiate(blast, new Vector3(bombBlast.x, 0.5f, bombBlast.z), Quaternion.identity) as GameObject;
+                        Instantiate(blast, new Vector3(bombBlast.x, bombBlast.y, bombBlast.z), Quaternion.identity);
 
-                        //AddBlastsList();
+                        CheckBlast(checkObs3);
                     }
                 }
             }
             isBomb = false;
             timeRemainingBomb = 2f;
             timeRemainingBlast = 0.5f;
-            Destroy(inst_bomb);
+
+            GameObject[] bombs = GameObject.FindGameObjectsWithTag("Bomb");
+            foreach (GameObject bomb in bombs)
+            {
+                Destroy(bomb);
+            }
+            bombCounter = 0;
         }
     }
 
-    //void AddBlastsList()
-    //{
-    //    RaycastHit hitInfo;
-    //    Physics.Raycast(new Ray(bombPosition, bombBlast), out hitInfo, 1f, LayerMask.GetMask("Obstacle"));
-
-    //    if (hitInfo.collider == null)
-    //        blastsList.Add(bombBlast);
-    //}
+    //Check this method at home!!! 
+    void CheckBlast(bool checkObs)
+    {
+        checkObs = true;
+        Physics.Raycast(new Ray(bombPosition, bombBlast), out hitInfo, 1f, LayerMask.GetMask("Block", "Obstacle"));
+        if (hitInfo.collider != null)
+            checkObs = !checkObs;
+    }
 
     void DestroyBlasts()
     {
@@ -118,22 +131,14 @@ public class Bomb : MonoBehaviour
             timeRemainingBlast -= Time.deltaTime;
         else
         {
-            Destroy(inst_blast1);
-            Destroy(inst_blast2);
-            Destroy(inst_blast3);
-            Destroy(inst_blast4);
-            Destroy(inst_blastCenter);
+            GameObject[] blasts = GameObject.FindGameObjectsWithTag("Blast");
+
+            foreach (GameObject blast in blasts)
+            {
+                Destroy(blast);
+            }
 
             timeRemainingBlast = 0;
-
-        //    foreach (var item in blastsList)
-        //    {
-        //        Object[] positionObjects = Physics.OverlapSphere(item, 1.0f);
-        //        foreach (var item2 in positionObjects)
-        //        {
-        //            Destroy(item2);
-        //        }
-        //    }
         }
     }
 }

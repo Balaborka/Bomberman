@@ -7,7 +7,8 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 _movementDiretion;
     public static Vector3 _destination;
-    public float moveSpeed = 1f;
+    public static float moveSpeed = 1f;
+    public static bool ghostModule = false;
 
     void Start()
     {
@@ -40,7 +41,10 @@ public class PlayerMovement : MonoBehaviour
             _movementDiretion = Vector3.zero;
 
         RaycastHit hitInfo;
-        Physics.Raycast(new Ray(transform.position, _movementDiretion), out hitInfo, 1f, LayerMask.GetMask("Block", "Bomb"));
+        if (!ghostModule)
+            Physics.Raycast(new Ray(transform.position, _movementDiretion), out hitInfo, 1f, LayerMask.GetMask("Block", "Obstacle", "Bomb"));
+        else
+            Physics.Raycast(new Ray(transform.position, _movementDiretion), out hitInfo, 1f, LayerMask.GetMask("Block", "Bomb"));
 
         if (_destination == transform.position && hitInfo.collider == null)
             _destination = transform.position + _movementDiretion;
