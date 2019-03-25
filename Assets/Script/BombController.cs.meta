@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e155bf3211392df40a92ffad52cc20d1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - bombino: {fileID: 8635922240588095540, guid: 79e23a84190d910468e2ebf5776b79a1,
+      type: 3}
+  - blastino: {fileID: 3418000876429053352, guid: 9cc38c2265ad66d4cb451c45f0e6c94a,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

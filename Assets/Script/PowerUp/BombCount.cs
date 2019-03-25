@@ -6,6 +6,6 @@ public class BombCount : PowerUp
 {
     protected override void PowerUpAction()
     {
-        Bomb.bombCount++;
+        BombController.bombCount++;
     }
 }
