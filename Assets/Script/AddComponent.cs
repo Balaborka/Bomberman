@@ -11,7 +11,7 @@ public class AddComponent : MonoBehaviour
     private int iGridSizeX;
     private int iGridSizeY;
 
-    public GameObject block;
+    public GameObject block; 
     private GameObject inst_block;
 
     public GameObject plane;

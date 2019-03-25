@@ -4,7 +4,8 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - bombino: {fileID: 100000, guid: c4bdfab5b24f3f54d9046920fcbdf5a6, type: 3}
+  - bombino: {fileID: 8635922240588095540, guid: 79e23a84190d910468e2ebf5776b79a1,
+      type: 3}
   - blastino: {fileID: 3418000876429053352, guid: 9cc38c2265ad66d4cb451c45f0e6c94a,
       type: 3}
   executionOrder: 0

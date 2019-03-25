@@ -24,7 +24,6 @@ public class BombController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && bombs.Where(b => b.enabled).Count() < bombCount)
         {
-            Debug.Log("Кинул личинку");
             var bomb = gameObject.AddComponent<Bomb>();
             bomb.bomba = bombino;
             bomb.blast = blastino;

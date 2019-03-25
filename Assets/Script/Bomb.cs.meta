@@ -6,6 +6,8 @@ MonoImporter:
   defaultReferences:
   - bomba: {instanceID: 0}
   - blast: {instanceID: 0}
+  - bombCharge: {fileID: 8300000, guid: 45cdf6aee50e4384b9a4915eca2859f4, type: 3}
+  - explosion: {fileID: 8300000, guid: a0d438c128020ae419d43d4499594a46, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
