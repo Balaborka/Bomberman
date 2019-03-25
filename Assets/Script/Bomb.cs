@@ -56,7 +56,7 @@ public class Bomb : MonoBehaviour
                     bombBlast.x = bombPosition.x + i;
                     bombBlast.z = bombPosition.z;
 
-                    checkObs0 = CheckBlast();
+                    //checkObs0 = CheckBlast();
 
                     InstantiateBlast(bombBlast, checkObs0);
                 }
@@ -65,7 +65,7 @@ public class Bomb : MonoBehaviour
                     bombBlast.x = bombPosition.x - i;
                     bombBlast.z = bombPosition.z;
 
-                    checkObs1 = CheckBlast();
+                    //checkObs1 = CheckBlast();
 
                     InstantiateBlast(bombBlast, checkObs1);                    
                 }
@@ -74,7 +74,7 @@ public class Bomb : MonoBehaviour
                     bombBlast.x = bombPosition.x;
                     bombBlast.z = bombPosition.z + i;
 
-                    checkObs2 = CheckBlast();
+                    //checkObs2 = CheckBlast();
 
                     InstantiateBlast(bombBlast, checkObs2);
                 }
@@ -83,7 +83,7 @@ public class Bomb : MonoBehaviour
                     bombBlast.x = bombPosition.x;
                     bombBlast.z = bombPosition.z - i;
 
-                    checkObs3 = CheckBlast();
+                    //checkObs3 = CheckBlast();
 
                     InstantiateBlast(bombBlast, checkObs3);
                 }

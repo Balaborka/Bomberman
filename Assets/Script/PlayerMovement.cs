@@ -10,9 +10,16 @@ public class PlayerMovement : MonoBehaviour
     public static float moveSpeed = 1f;
     public static bool ghostModule = false;
 
+    private Transform myTransform;
+    private Animator animator;
+
+    //public bool Walking = false;
     void Start()
     {
         _destination = transform.position;
+
+        myTransform = transform;
+        animator = myTransform.FindChild("PlayerModel").GetComponent<Animator>();
     }
     
     void Update()
@@ -34,20 +41,28 @@ public class PlayerMovement : MonoBehaviour
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
         if (input.x != 0)
+        {
             _movementDiretion.Set(input.x, 0.0f, 0.0f);
+        }
         else if (input.y != 0)
+        {
             _movementDiretion.Set(0.0f, 0.0f, input.y);
+        }
         else if (input == Vector3.zero)
+        {
             _movementDiretion = Vector3.zero;
+        }
 
-        RaycastHit hitInfo;
+            RaycastHit hitInfo;
         if (!ghostModule)
             Physics.Raycast(new Ray(transform.position, _movementDiretion), out hitInfo, 1f, LayerMask.GetMask("Block", "Obstacle", "Bomb"));
         else
             Physics.Raycast(new Ray(transform.position, _movementDiretion), out hitInfo, 1f, LayerMask.GetMask("Block", "Bomb"));
 
         if (_destination == transform.position && hitInfo.collider == null)
+        {
             _destination = transform.position + _movementDiretion;
+        }
 
         float distance = moveSpeed * Time.deltaTime * 2;
         transform.position = Vector3.MoveTowards(transform.position, _destination, distance);
@@ -83,5 +98,15 @@ public class PlayerMovement : MonoBehaviour
             transform.Rotate(new Vector3(0.0f, -90.0f, 0.0f));
             checkRotate = "Left";
         }
+
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.RightArrow) || (Input.GetKey(KeyCode.LeftArrow)))
+        {
+            animator.SetBool("Walking", false);
+        }
+        else
+        {
+            animator.SetBool("Walking", true);
+        }
+        
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -239,6 +239,7 @@ MonoBehaviour:
   bombino: {fileID: 8635922240588095540, guid: 79e23a84190d910468e2ebf5776b79a1, type: 3}
   blastino: {fileID: 3418000876429053352, guid: 9cc38c2265ad66d4cb451c45f0e6c94a,
     type: 3}
+  bombs: []
 --- !u!1 &757915871
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,9 @@ public class EnemyMovement : MonoBehaviour
     Vector3 _destination;
     float transformY;
 
+    private Transform myTransform;
+    private Animator animator;
+
     void Start()
     {
         _destination = transform.position;
@@ -72,18 +75,6 @@ public class EnemyMovement : MonoBehaviour
     void Rotation(Vector3 vector)
     {
         transformY = vector.z != 1.0f ? vector.x * 90 + vector.z * 180 : 0;
-
-        //if (vector.x == 1.0f)
-        //    transformY = 90.0f;
-
-        //else if (vector.x == -1.0f)
-        //    transformY = -90.0f;
-
-        //else if (vector.z == 1.0f)
-        //    transformY = 0.0f;
-
-        //else if (vector.z == -1.0f)
-        //    transformY = -180.0f;
     }
 
     protected virtual int GetNextPosition()
