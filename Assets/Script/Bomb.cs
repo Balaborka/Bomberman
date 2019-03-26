@@ -18,23 +18,14 @@ public class Bomb : MonoBehaviour
     Vector3 bombPosition;
     public Vector3 bombBlast;
 
-    float timeRemainingBomb = 2f;
+    float timeRemainingBomb = 2.85f;
     float timeRemainingBlast = 0f;
     public static float blastLength = 1;
-
-    //public AudioClip bombCharge;
-    //AudioSource audioBombCharge;
-
-    //public AudioClip explosion;
-    //AudioSource audioExplosion;
 
     public void Start()
     {
         bombBlast.y = 0.5f;
         bombPosition.y = 0.5f;
-
-        //audioBombCharge = GetComponent<AudioSource>();
-        //audioExplosion = GetComponent<AudioSource>();
     }
     public void Update()
     {
@@ -45,7 +36,6 @@ public class Bomb : MonoBehaviour
     public void AddBomb()
     {
         bombaClone = Instantiate(bomba, new Vector3(PlayerMovement._destination.x, 0.5f, PlayerMovement._destination.z), Quaternion.identity);
-        //audioBombCharge.PlayOneShot(bombCharge);
 
         bombPosition.x = PlayerMovement._destination.x;
         bombPosition.z = PlayerMovement._destination.z;
@@ -57,7 +47,6 @@ public class Bomb : MonoBehaviour
             timeRemainingBomb -= Time.deltaTime;
         else
         {
-            //audioExplosion.PlayOneShot(explosion);
             Instantiate(blast, new Vector3(bombPosition.x, bombPosition.y, bombPosition.z), Quaternion.identity);
             
             for (float i = 1; i <= blastLength; i += 1)
@@ -100,7 +89,7 @@ public class Bomb : MonoBehaviour
                 }
 
             }
-            timeRemainingBomb = 2f;
+            timeRemainingBomb = 2.85f;
             timeRemainingBlast = 0.5f;
             Destroy(bombaClone);
         }
