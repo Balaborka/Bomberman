@@ -16,7 +16,6 @@ public class Bomb : MonoBehaviour
     private GameObject inst_blast;
 
     Vector3 bombPosition;
-    public Vector3 bombBlast;
 
     float timeRemainingBomb = 2.85f;
     float timeRemainingBlast = 0f;
@@ -24,7 +23,6 @@ public class Bomb : MonoBehaviour
 
     public void Start()
     {
-        bombBlast.y = 0.5f;
         bombPosition.y = 0.5f;
     }
     public void Update()
@@ -48,44 +46,56 @@ public class Bomb : MonoBehaviour
         else
         {
             Instantiate(blast, new Vector3(bombPosition.x, bombPosition.y, bombPosition.z), Quaternion.identity);
-            
+
             for (float i = 1; i <= blastLength; i += 1)
             {
                 if (checkObs0)
                 {
-                    bombBlast.x = bombPosition.x + i;
-                    bombBlast.z = bombPosition.z;
+                    var x = i;
+                    var z = 0;
+                    var direction = Vector3.right * x + Vector3.forward * z;
 
-                    //checkObs0 = CheckBlast();
+                    checkObs0 = IsBlock(direction, i);
 
-                    InstantiateBlast(bombBlast, checkObs0);
+                    InstantiateBlast(bombPosition + direction, checkObs0);
+
+                    checkObs0 = IsObstacle(direction, i);
                 }
                 if (checkObs1)
                 {
-                    bombBlast.x = bombPosition.x - i;
-                    bombBlast.z = bombPosition.z;
+                    var x = -i;
+                    var z = 0;
+                    var direction = Vector3.right * x + Vector3.forward * z;
 
-                    //checkObs1 = CheckBlast();
+                    checkObs1 = IsBlock(direction, i);
 
-                    InstantiateBlast(bombBlast, checkObs1);                    
+                    InstantiateBlast(bombPosition + direction, checkObs1);
+
+                    checkObs1 = IsObstacle(direction, i);
                 }
                 if (checkObs2)
                 {
-                    bombBlast.x = bombPosition.x;
-                    bombBlast.z = bombPosition.z + i;
+                    var x = 0;
+                    var z = i;
+                    var direction = Vector3.right * x + Vector3.forward * z;
 
-                    //checkObs2 = CheckBlast();
+                    checkObs2 = IsBlock(direction, i);
 
-                    InstantiateBlast(bombBlast, checkObs2);
+                    InstantiateBlast(bombPosition + direction, checkObs2);
+
+                    checkObs2 = IsObstacle(direction, i);
                 }
                 if (checkObs3)
                 {
-                    bombBlast.x = bombPosition.x;
-                    bombBlast.z = bombPosition.z - i;
+                    var x = 0;
+                    var z = -i;
+                    var direction = Vector3.right * x + Vector3.forward * z;
 
-                    //checkObs3 = CheckBlast();
+                    checkObs3 = IsBlock(direction, i);
 
-                    InstantiateBlast(bombBlast, checkObs3);
+                    InstantiateBlast(bombPosition + direction, checkObs3);
+
+                    checkObs3 = IsObstacle(direction, i);
                 }
 
             }
@@ -100,14 +110,26 @@ public class Bomb : MonoBehaviour
         if (active)
             Instantiate(blast, new Vector3(vector.x, vector.y, vector.z), Quaternion.identity);
     }
-    
-    bool CheckBlast()
+
+    bool IsBlock(Vector3 direction, float distance)
     {
-        RaycastHit hitInfo;
-        Physics.Raycast(new Ray(bombPosition, bombBlast), out hitInfo, 1f, LayerMask.GetMask("Block", "Obstacle"));
-        if (hitInfo.collider != null)
-            return false;
-        return true;
+        return !Physics.Raycast(new Ray(bombPosition, direction), distance, LayerMask.GetMask("Block"));
+    }
+
+    bool IsObstacle(Vector3 direction, float distance)
+    {
+        return !Physics.Raycast(new Ray(bombPosition, direction), distance, LayerMask.GetMask("Obstacle"));
+    }
+
+    bool CheckBlast(int x, int z, float distance)
+    {
+        bool isBlock;
+        Vector3 bombBlast = bombPosition;
+        if (distance == 1)
+            isBlock = Physics.Raycast(new Ray(bombPosition, Vector3.right * x + Vector3.forward * z), distance, LayerMask.GetMask("Block"));
+        else
+            isBlock = Physics.Raycast(new Ray(bombPosition, Vector3.right * x + Vector3.forward * z), distance, LayerMask.GetMask("Block", "Obstacle"));
+        return !isBlock;
     }
 
     void DestroyBlasts()

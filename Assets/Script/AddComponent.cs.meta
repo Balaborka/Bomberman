@@ -3,7 +3,24 @@ guid: 4889e99d124dec04ca7bac6379147c76
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - block: {fileID: 3646221428801045598, guid: 6153b5134526e3648a74dea9b22bd6b9, type: 3}
+  - plane: {fileID: 839552441139983678, guid: 7e141c4409e116843b8072b0f019efba, type: 3}
+  - obstacle: {fileID: 8589606624500686654, guid: 42eb4fae2bd404147ab6128d6c6fc5d1,
+      type: 3}
+  - player: {fileID: 2042715618594197253, guid: 6b79403a10259db448cfde1889463366,
+      type: 3}
+  - enemy: {fileID: 8596825257134141051, guid: 54608b1b5b6dc924f8133f2db8b7e926, type: 3}
+  - smartEnemy: {fileID: 7873878681729352352, guid: ad3c8d702d606ac498e09b5a0bfd9b47,
+      type: 3}
+  - BlastLengthPowerUp: {fileID: 6253171197634778097, guid: c63a743f83278c4489aae78c3fa3e1e4,
+      type: 3}
+  - BombCountPowerUp: {fileID: 6253171197634778097, guid: 22eb0fee0a7a7a4409cd7416a38ffddf,
+      type: 3}
+  - GhostPowerUp: {fileID: 6253171197634778097, guid: 696f3ab21f7222d4885a16bd7a2bef4c,
+      type: 3}
+  - PlayerSpeedPowerUp: {fileID: 6253171197634778097, guid: 15898172bf18b3d4e996f3e6cac48b70,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

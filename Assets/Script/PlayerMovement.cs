@@ -13,13 +13,15 @@ public class PlayerMovement : MonoBehaviour
     private Transform myTransform;
     private Animator animator;
 
-    //public bool Walking = false;
+    AudioSource audioData;
     void Start()
     {
         _destination = transform.position;
 
         myTransform = transform;
         animator = myTransform.FindChild("PlayerModel").GetComponent<Animator>();
+
+        audioData = GetComponent<AudioSource>();
     }
     
     void Update()
@@ -53,13 +55,13 @@ public class PlayerMovement : MonoBehaviour
             _movementDiretion = Vector3.zero;
         }
 
-            RaycastHit hitInfo;
+        var stop = false;
         if (!ghostModule)
-            Physics.Raycast(new Ray(transform.position, _movementDiretion), out hitInfo, 1f, LayerMask.GetMask("Block", "Obstacle", "Bomb"));
+            stop = Physics.Raycast(new Ray(transform.position, _movementDiretion), 1f, LayerMask.GetMask("Block", "Obstacle", "Bomb"));
         else
-            Physics.Raycast(new Ray(transform.position, _movementDiretion), out hitInfo, 1f, LayerMask.GetMask("Block", "Bomb"));
-
-        if (_destination == transform.position && hitInfo.collider == null)
+            stop = Physics.Raycast(new Ray(transform.position, _movementDiretion), 1f, LayerMask.GetMask("Block", "Bomb"));
+        
+        if (_destination == transform.position && !stop)
         {
             _destination = transform.position + _movementDiretion;
         }
@@ -102,10 +104,15 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.RightArrow) || (Input.GetKey(KeyCode.LeftArrow)))
         {
             animator.SetBool("Walking", false);
+
+            if (!audioData.isPlaying)
+                audioData.Play();
         }
         else
         {
             animator.SetBool("Walking", true);
+
+            audioData.Stop();
         }
         
     }
