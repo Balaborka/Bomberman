@@ -7,10 +7,13 @@ public class PowerUp : MonoBehaviour
     public Vector3 identPosition;
     public static float counter = 0.0f;
 
+    AudioSource audioData;
     private void Start()
     {
         identPosition.x = -2.0f;
         identPosition.y = 0.5f;
+
+        audioData = GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -23,6 +26,8 @@ public class PowerUp : MonoBehaviour
             this.gameObject.transform.position = identPosition;
 
             PowerUpAction();
+
+            audioData.Play();
         }
     }
 

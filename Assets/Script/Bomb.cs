@@ -101,9 +101,9 @@ public class Bomb : MonoBehaviour
                 }
 
             }
+            Destroy(bombaClone);
             timeRemainingBomb = 2.85f;
             timeRemainingBlast = 0.5f;
-            Destroy(bombaClone);
         }
 
     }
@@ -147,7 +147,6 @@ public class Bomb : MonoBehaviour
             {
                 Destroy(blast);
             }
-            timeRemainingBlast = 0;
 
             enabled = false;
         }
