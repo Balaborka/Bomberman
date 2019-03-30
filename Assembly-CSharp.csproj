@@ -65,6 +65,7 @@
     <Compile Include="Assets\Script\AddComponent.cs" />
     <Compile Include="Assets\Script\Bomb.cs" />
     <Compile Include="Assets\Script\BombController.cs" />
+    <Compile Include="Assets\Script\CanPutBomb.cs" />
     <Compile Include="Assets\Script\CrashBomb.cs" />
     <Compile Include="Assets\Script\EnemyMovement.cs" />
     <Compile Include="Assets\Script\PlayerMovement.cs" />

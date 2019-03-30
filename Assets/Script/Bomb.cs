@@ -31,6 +31,8 @@ public class Bomb : MonoBehaviour
         DestroyBlasts();
     }
 
+
+
     public void AddBomb()
     {
         bombaClone = Instantiate(bomba, new Vector3(PlayerMovement._destination.x, 0.5f, PlayerMovement._destination.z), Quaternion.identity);
@@ -103,6 +105,7 @@ public class Bomb : MonoBehaviour
             timeRemainingBlast = 0.5f;
             Destroy(bombaClone);
         }
+
     }
 
     private void InstantiateBlast(Vector3 vector, bool active)

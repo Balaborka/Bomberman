@@ -22,7 +22,7 @@ public class BombController : MonoBehaviour
 
     void AddBomb()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && bombs.Where(b => b.enabled).Count() < bombCount)
+        if (Input.GetKeyDown(KeyCode.Space) && bombs.Where(b => b.enabled).Count() < bombCount && CanPutBomb.canPut)
         {
             var bomb = gameObject.AddComponent<Bomb>();
 
