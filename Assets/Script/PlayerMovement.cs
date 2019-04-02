@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
 
     AudioSource audioData;
+
+    public static bool canPut = true;
+
     void Start()
     {
         _destination = transform.position;
@@ -33,9 +36,13 @@ public class PlayerMovement : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy")
-        {
             Destroy(this.gameObject);
-        }
+        if (other.gameObject.tag == "Bomb" || other.gameObject.tag == "Obstacle")
+            canPut = false;
+    }
+    void OnTriggerExit(Collider other)
+    {
+        canPut = true;
     }
 
     void MovementPlayer()
