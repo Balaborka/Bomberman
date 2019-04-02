@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovement : Destroyed
 {
     private System.Random rand = new System.Random();
     public float moveSpeed = 1;

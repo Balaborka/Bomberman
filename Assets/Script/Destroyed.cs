@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrashBomb : MonoBehaviour
+public class Destroyed : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
