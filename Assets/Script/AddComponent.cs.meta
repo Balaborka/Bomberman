@@ -21,6 +21,10 @@ MonoImporter:
       type: 3}
   - PlayerSpeedPowerUp: {fileID: 6253171197634778097, guid: 15898172bf18b3d4e996f3e6cac48b70,
       type: 3}
+  - bombino: {fileID: 8635922240588095540, guid: 79e23a84190d910468e2ebf5776b79a1,
+      type: 3}
+  - blastino: {fileID: 3418000876429053352, guid: 9cc38c2265ad66d4cb451c45f0e6c94a,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

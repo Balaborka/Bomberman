@@ -60,6 +60,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Prefabs\Resourses\PowerUp\PowerUp\BlastLength.cs" />
+    <Compile Include="Assets\Prefabs\Resourses\PowerUp\PowerUp\BombCount.cs" />
+    <Compile Include="Assets\Prefabs\Resourses\PowerUp\PowerUp\Ghost.cs" />
+    <Compile Include="Assets\Prefabs\Resourses\PowerUp\PowerUp\PlayerSpeed.cs" />
+    <Compile Include="Assets\Prefabs\Resourses\PowerUp\PowerUp\PowerUp.cs" />
     <Compile Include="Assets\Script\A Star\Grid.cs" />
     <Compile Include="Assets\Script\A Star\Node.cs" />
     <Compile Include="Assets\Script\AddComponent.cs" />
@@ -68,11 +73,6 @@
     <Compile Include="Assets\Script\Destroyed.cs" />
     <Compile Include="Assets\Script\EnemyMovement.cs" />
     <Compile Include="Assets\Script\PlayerMovement.cs" />
-    <Compile Include="Assets\Script\PowerUp\BlastLength.cs" />
-    <Compile Include="Assets\Script\PowerUp\BombCount.cs" />
-    <Compile Include="Assets\Script\PowerUp\Ghost.cs" />
-    <Compile Include="Assets\Script\PowerUp\PlayerSpeed.cs" />
-    <Compile Include="Assets\Script\PowerUp\PowerUp.cs" />
     <Compile Include="Assets\Script\SmartEnemyMovement.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/Develop/DX Unity/Bomberman/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

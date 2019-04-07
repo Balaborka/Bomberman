@@ -4,10 +4,8 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - bomba: {instanceID: 0}
-  - blast: {instanceID: 0}
-  - bombCharge: {fileID: 8300000, guid: 45cdf6aee50e4384b9a4915eca2859f4, type: 3}
-  - explosion: {fileID: 8300000, guid: a0d438c128020ae419d43d4499594a46, type: 3}
+  - Bomba: {fileID: 8635922240588095540, guid: 79e23a84190d910468e2ebf5776b79a1, type: 3}
+  - Blast: {fileID: 3418000876429053352, guid: 9cc38c2265ad66d4cb451c45f0e6c94a, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

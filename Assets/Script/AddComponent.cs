@@ -33,7 +33,7 @@ public class AddComponent : MonoBehaviour
     public GameObject BlastLengthPowerUp;
     public GameObject BombCountPowerUp;
     public GameObject GhostPowerUp;
-    public GameObject PlayerSpeedPowerUp;
+    public GameObject PlayerSpeedPowerUp;    
 
     Node[,] NodeArray;
     public List<Node> FinalPath;

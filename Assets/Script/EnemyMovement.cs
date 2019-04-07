@@ -21,10 +21,10 @@ public class EnemyMovement : Destroyed
     }
     void Update()
     {
-        MovementEnemyNew();
+        MoveEnemy();
     }
 
-    private void MovementEnemyNew()
+    private void MoveEnemy()
     {
         var oldPositionX = transform.position.x;
         var oldPositionZ = transform.position.z;
@@ -72,12 +72,12 @@ public class EnemyMovement : Destroyed
         return Vector3.zero;
     }
 
-    void Rotation(Vector3 vector)
+    private void Rotation(Vector3 vector)
     {
         transformY = vector.z != 1.0f ? vector.x * 90 + vector.z * 180 : 0;
     }
 
-    protected virtual int GetNextPosition()
+    private int GetNextPosition()
     {
         return rand.Next(4);
     }

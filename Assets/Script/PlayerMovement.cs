@@ -22,7 +22,7 @@ public class PlayerMovement : Destroyed
         _destination = transform.position;
 
         myTransform = transform;
-        animator = myTransform.FindChild("PlayerModel").GetComponent<Animator>();
+        animator = myTransform.Find("PlayerModel").GetComponent<Animator>();
 
         audioData = GetComponent<AudioSource>();
     }
@@ -31,6 +31,8 @@ public class PlayerMovement : Destroyed
     {
         MovementPlayer();
         RotatePlayer();
+        if (Input.GetKeyDown(KeyCode.Space))
+            BombController.instance.AddBomb(_destination.x, _destination.z);
     }
 
     void OnTriggerEnter(Collider other)

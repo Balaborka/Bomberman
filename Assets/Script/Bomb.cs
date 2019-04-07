@@ -9,10 +9,10 @@ public class Bomb : MonoBehaviour
     bool checkObs2 = true;
     bool checkObs3 = true;
 
-    public GameObject bomba;
+    public GameObject Bomba;
     private GameObject bombaClone;
 
-    public GameObject blast;
+    public GameObject Blast;
     private GameObject inst_blast;
 
     Vector3 bombPosition;
@@ -33,12 +33,12 @@ public class Bomb : MonoBehaviour
 
 
 
-    public void AddBomb()
+    public void AddBomb(float x, float z)
     {
-        bombaClone = Instantiate(bomba, new Vector3(PlayerMovement._destination.x, 0.5f, PlayerMovement._destination.z), Quaternion.identity);
+        bombaClone = Instantiate(Bomba, new Vector3(x, 0.5f, z), Quaternion.identity);
 
-        bombPosition.x = PlayerMovement._destination.x;
-        bombPosition.z = PlayerMovement._destination.z;
+        bombPosition.x = x;
+        bombPosition.z = z;
     }
 
     void DestroyBomb()
@@ -47,7 +47,7 @@ public class Bomb : MonoBehaviour
             timeRemainingBomb -= Time.deltaTime;
         else
         {
-            Instantiate(blast, new Vector3(bombPosition.x, bombPosition.y, bombPosition.z), Quaternion.identity);
+            Instantiate(Blast, new Vector3(bombPosition.x, bombPosition.y, bombPosition.z), Quaternion.identity);
 
             for (float i = 1; i <= blastLength; i += 1)
             {
@@ -111,7 +111,7 @@ public class Bomb : MonoBehaviour
     private void InstantiateBlast(Vector3 vector, bool active)
     {
         if (active)
-            Instantiate(blast, new Vector3(vector.x, vector.y, vector.z), Quaternion.identity);
+            Instantiate(Blast, new Vector3(vector.x, vector.y, vector.z), Quaternion.identity);
     }
 
     bool IsBlock(Vector3 direction, float distance)

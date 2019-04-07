@@ -3,33 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class BombController : MonoBehaviour
+public class BombController: MonoBehaviour
 {
+    public static BombController instance = null;
+
     public static int bombCount = 1;
+    public List<Bomb> bombs = new List<Bomb>();
 
     public GameObject bombino;
     public GameObject blastino;
-    public List<Bomb> bombs = new List<Bomb>();
 
-    private void Start()
+    public void Awake()
     {
+        if (instance == null)
+            instance = this;
     }
 
-    void Update()
+    public void AddBomb(float x, float z)
     {
-        AddBomb();
-    }
-
-    void AddBomb()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && bombs.Where(b => b.enabled).Count() < bombCount && PlayerMovement.canPut)
+        if (bombs.Where(b => b.enabled).Count() < bombCount && PlayerMovement.canPut)
         {
             var bomb = gameObject.AddComponent<Bomb>();
+            bomb.Bomba = bombino;
+            bomb.Blast = blastino;
 
-            bomb.bomba = bombino;
-            bomb.blast = blastino;
             bomb.enabled = true;
-            bomb.AddBomb();
+            bomb.AddBomb(x, z);
 
             bombs.Add(bomb);           
         }
